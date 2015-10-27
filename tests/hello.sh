@@ -3,13 +3,13 @@
 set -euf -o pipefail
 
 echo "tns create"
-docker run -it --rm --privileged --net=host -v $PWD:/src abarbu/nativescript tns create hello
+docker run -it --privileged --net=host -v $PWD:/src abarbu/nativescript tns create hello
 
 cd hello
 echo "tns platform add"
-docker run -it --rm --privileged --net=host -v $PWD:/src abarbu/nativescript tns platform add android
+docker run -it --privileged --net=host -v $PWD:/src abarbu/nativescript tns platform add android
 
 echo "ghcjs exists"
-docker run -it --rm -v $PWD:/src abarbu/stack-ghcjs-nativescript:lts-3.0 ghcjs --help
+docker run -it -v $PWD:/src abarbu/stack-ghcjs-nativescript:lts-3.0 ghcjs --help
 
 echo "Done"
