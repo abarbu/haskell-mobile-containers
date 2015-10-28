@@ -17,8 +17,11 @@ dependencies:
     - docker build -t abarbu/node.js:0.12 node.js
     - mkdir -p ~/docker; docker save abarbu/node.js:0.12 > ~/docker/node.js.tar
     - if [[ -e ~/docker/nativescript.tar ]]; then docker load --input ~/docker/nativescript.tar; fi
-    - docker build -t abarbu/nativescript nativescript
-    - mkdir -p ~/docker; docker save abarbu/nativescript > ~/docker/nativescript.tar
+    - docker build -t abarbu/nativescript:1.4 nativescript
+    - mkdir -p ~/docker; docker save abarbu/nativescript:1.4 > ~/docker/nativescript.tar
+    - if [[ -e ~/docker/android-studio-nativescript.tar ]]; then docker load --input ~/docker/android-studio-nativescript.tar; fi
+    - docker build -t abarbu/android-studio-nativescript:1.4 android-studio-nativescript
+    - mkdir -p ~/docker; docker save abarbu/android-studio-nativescript:1.4 > ~/docker/android-studio-nativescript.tar
     - if [[ -e ~/docker/stack-ghcjs-nativescript.tar ]]; then docker load --input ~/docker/stack-ghcjs-nativescript.tar; fi
     - docker build -t abarbu/stack-ghcjs-nativescript:lts-3.0 stack-ghcjs-nativescript
     - mkdir -p ~/docker; docker save abarbu/stack-ghcjs-nativescript:lts-3.0 > ~/docker/stack-ghcjs-nativescript.tar
@@ -35,5 +38,7 @@ deployment:
       - docker push abarbu/java:8
       - docker push abarbu/android:22
       - docker push abarbu/node.js:0.12
-      - docker push abarbu/nativescript
+      - docker push abarbu/nativescript:1.4
+      - docker push abarbu/android-studio-nativescript:1.4
       - docker push abarbu/stack-ghcjs-nativescript:lts-3.0
+      - curl -v -X POST https://circleci.com/api/v1/project/abarbu/haskell-mobile/tree/master?circle-token=$HASKELL_MOBILE_TOKEN

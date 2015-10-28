@@ -2,7 +2,7 @@ FROM abarbu/node.js:0.12
 
 MAINTAINER Andrei Barbu <andrei@0xab.com>
 
-RUN npm install nativescript -g --unsafe-perm
+RUN npm install nativescript@1.4.3 -g --unsafe-perm
 
 ENV GRADLE_USER_HOME /src/gradle
 VOLUME /src
