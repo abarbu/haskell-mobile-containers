@@ -2,8 +2,7 @@ FROM abarbu/java:8
 
 MAINTAINER Andrei Barbu <andrei@0xab.com>
 
-RUN \
-add-apt-repository -y ppa:cwchien/gradle && \
+RUN add-apt-repository -y ppa:cwchien/gradle && \
 apt-get update && \
 apt-get install -y curl lib32stdc++6 lib32z1 lib32ncurses5 lib32bz2-1.0 g++ ant python make gradle
 
